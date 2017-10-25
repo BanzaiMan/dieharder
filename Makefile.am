@@ -1,7 +1,7 @@
 ## Process this file with automake to produce Makefile.in
 
 # These are made, in order presented, from the toplevel make
-SUBDIRS = libdieharder dieharder include manual
+SUBDIRS = libdieharder dieharder include
 
 EXTRA_DIST = autogen.sh Copyright dieharder.abs
 
@@ -23,8 +23,6 @@ LIBTIME = libwulf.time
 INCTIME = include.time
 PROGRAM = dieharder
 PROGTIME = dieharder.time
-MANUAL = manual
-MANTIME = manual.time
 RDIEHARDER = RDieHarder
 
 #========================================================================
@@ -101,10 +99,6 @@ tgz: Makefile COPYING Copyright NOTES README $(SPEC) $(ABS) $(PHP)
 	make clean; \
 	cd ..; \
 	cp -r $(PROGRAM) $(PROJECTDIR); \
-	cd $(MANUAL); \
-	make clean; \
-	cd ..; \
-	cp -r $(MANUAL) $(PROJECTDIR); \
 	cp -r include $(PROJECTDIR); \
 	cp -r m4 $(PROJECTDIR); \
 	cp $(ABS) $(PROJECTDIR); \
