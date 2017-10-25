@@ -14,6 +14,7 @@ install:
   - make
   - make install
 cache:
+  ccache: true
   directories:
     - $HOME/dieharder
 
