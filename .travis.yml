@@ -1,0 +1,32 @@
+language: c
+dist: trusty
+sudo: false
+addons:
+  apt:
+    packages:
+      - libgsl0-dev
+
+before_install:
+  - rm -rf manual # no need for it
+install:
+  - ./autogen.sh
+  - ./configure
+
+env:
+  - DIEHARDER_TEST=0
+  - DIEHARDER_TEST=1
+  - DIEHARDER_TEST=2
+  - DIEHARDER_TEST=3
+  - DIEHARDER_TEST=4
+  - DIEHARDER_TEST=8
+  - DIEHARDER_TEST=9
+  - DIEHARDER_TEST=10
+  - DIEHARDER_TEST=11
+  - DIEHARDER_TEST=12
+  - DIEHARDER_TEST=13
+  - DIEHARDER_TEST=15
+  - DIEHARDER_TEST=16
+  - DIEHARDER_TEST=17
+
+script:
+  - ./dieharder/dieharder -d $DIEHARDER_TEST
