@@ -11,7 +11,11 @@ before_install:
 install:
   - ./autogen.sh
   - ./configure
-  - make
+  - make --prefix=$HOME/
+  - make install
+cache:
+  directories:
+    - $HOME/dieharder
 
 env:
   - DIEHARDER_TEST=0
@@ -28,6 +32,19 @@ env:
   - DIEHARDER_TEST=15
   - DIEHARDER_TEST=16
   - DIEHARDER_TEST=17
+  - DIEHARDER_TEST=100
+  - DIEHARDER_TEST=101
+  - DIEHARDER_TEST=102
+  - DIEHARDER_TEST=200
+  - DIEHARDER_TEST=201
+  - DIEHARDER_TEST=202
+  - DIEHARDER_TEST=203
+  - DIEHARDER_TEST=204
+  - DIEHARDER_TEST=205
+  - DIEHARDER_TEST=206
+  - DIEHARDER_TEST=207
+  - DIEHARDER_TEST=208
+  - DIEHARDER_TEST=209
 
 script:
-  - ./dieharder/dieharder -d $DIEHARDER_TEST
+  - $HOME/dieharder/dieharder -d $DIEHARDER_TEST
