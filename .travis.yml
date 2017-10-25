@@ -10,8 +10,8 @@ before_install:
   - rm -rf manual # no need for it
 install:
   - ./autogen.sh
-  - ./configure
-  - make --prefix=$HOME/
+  - ./configure --prefix=$HOME
+  - make
   - make install
 cache:
   directories:
