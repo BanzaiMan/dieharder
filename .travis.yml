@@ -1,51 +1,58 @@
 language: c
 dist: trusty
 sudo: false
-addons:
-  apt:
-    packages:
-      - libgsl0-dev
-
-before_install:
-  - rm -rf manual # no need for it
-install:
-  - ./autogen.sh
-  - ./configure --prefix=$HOME/dieharder
-  - make
-  - make install
 cache:
   ccache: true
   directories:
     - $HOME/dieharder
 
-env:
-  - DIEHARDER_TEST=0
-  - DIEHARDER_TEST=1
-  - DIEHARDER_TEST=2
-  - DIEHARDER_TEST=3
-  - DIEHARDER_TEST=4
-  - DIEHARDER_TEST=8
-  - DIEHARDER_TEST=9
-  - DIEHARDER_TEST=10
-  - DIEHARDER_TEST=11
-  - DIEHARDER_TEST=12
-  - DIEHARDER_TEST=13
-  - DIEHARDER_TEST=15
-  - DIEHARDER_TEST=16
-  - DIEHARDER_TEST=17
-  - DIEHARDER_TEST=100
-  - DIEHARDER_TEST=101
-  - DIEHARDER_TEST=102
-  - DIEHARDER_TEST=200
-  - DIEHARDER_TEST=201
-  - DIEHARDER_TEST=202
-  - DIEHARDER_TEST=203
-  - DIEHARDER_TEST=204
-  - DIEHARDER_TEST=205
-  - DIEHARDER_TEST=206
-  - DIEHARDER_TEST=207
-  - DIEHARDER_TEST=208
-  - DIEHARDER_TEST=209
+stages:
+  - compile
+  - test
+jobs:
+  include:
+    - stage: compile
+      addons:
+        apt:
+          packages:
+            - libgsl0-dev
 
+      before_install:
+        - rm -rf manual # no need for it
+      install:
+        - ./autogen.sh
+        - ./configure --prefix=$HOME/dieharder
+        - make
+        - make install
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+    -
+
+before_script:
+  - DIEHARDER_TEST=(0 1 2 3 4 8 9 10 11 12 13 15 16 17 100 101 101 102 200 201 202 203 204 205 206 207 208 209)
 script:
-  - $HOME/dieharder/bin/dieharder -d $DIEHARDER_TEST
+  - $HOME/dieharder/bin/dieharder -d ${DIEHARDER_TEST[${TRAVIS_JOB_NUMBER##*.}]}
