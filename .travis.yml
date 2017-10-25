@@ -10,7 +10,7 @@ before_install:
   - rm -rf manual # no need for it
 install:
   - ./autogen.sh
-  - ./configure --prefix=$HOME
+  - ./configure --prefix=$HOME/dieharder
   - make
   - make install
 cache:
@@ -47,4 +47,4 @@ env:
   - DIEHARDER_TEST=209
 
 script:
-  - $HOME/dieharder/dieharder -d $DIEHARDER_TEST
+  - $HOME/dieharder/bin/dieharder -d $DIEHARDER_TEST
