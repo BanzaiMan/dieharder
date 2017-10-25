@@ -11,6 +11,7 @@ before_install:
 install:
   - ./autogen.sh
   - ./configure
+  - make
 
 env:
   - DIEHARDER_TEST=0
