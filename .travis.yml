@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - libgsl0-dev
+      - haveged
 cache:
   ccache: true
   directories:
